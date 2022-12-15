@@ -7,7 +7,7 @@ const session = require('express-session')
 const MongoStore = require('connect-mongo');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const path = require('path');
+// const path = require('path');
 
 
 const app = express();
@@ -48,12 +48,12 @@ mongoose.connect(process.env.MONGODB_URI, {
   console.log("connected to mongodb")
 })
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('userlogin/build'))
-  app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'userlogin', 'build', 'index.html'))
-  })
-}
+// if (process.env.NODE_ENV === 'production') {
+  // app.use(express.static('userlogin/build'))
+//   app.get('/*', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'userlogin', 'build', 'index.html'))
+//   })
+// }
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
