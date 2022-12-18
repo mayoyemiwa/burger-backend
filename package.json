@@ -4,14 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "userlogin-install": "npm install --prefix userlogin",
-    "server": "nodemon server.js",
-    "userlogin": "npm start --prefix userlogin",
-    "server-install":"npm install",
-    "install-all": "concurrently \"npm run server-install\" \"npm run userlogin-install\"",
-    "dev": "concurrently \"npm run server\" \"npm run userlogin\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix userlogin && npm run build --prefix userlogin"
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",

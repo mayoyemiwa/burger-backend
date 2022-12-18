@@ -14,7 +14,9 @@ const app = express();
 
 app.set('trust-proxy', 1)
 
-app.use(cors());
+app.use(cors({
+  origin:"https://burger-app-bj6i.onrender.com"
+}));
 
 app.use(express.json());
 app.use(cookieParser())
@@ -54,6 +56,14 @@ mongoose.connect(process.env.MONGODB_URI, {
 //     res.sendFile(path.join(__dirname, 'userlogin', 'build', 'index.html'))
 //   })
 // }
+
+// "userlogin-install": "npm install --prefix userlogin",
+//     "server": "nodemon server.js",
+//     "userlogin": "npm start --prefix userlogin",
+//     "server-install":"npm install",
+//     "install-all": "concurrently \"npm run server-install\" \"npm run userlogin-install\"",
+//     "dev": "concurrently \"npm run server\" \"npm run userlogin\"",
+//     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix userlogin && npm run build --prefix userlogin"
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
