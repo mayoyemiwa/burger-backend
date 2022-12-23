@@ -39,7 +39,10 @@ app.use(session({
     collectionName: "sessions"
   }),
 }))
-app.use(authRoutes);
+// app.use(express.static('build'))
+// app.get('/*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'build', 'index.html'))
+// });
 
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
@@ -48,13 +51,6 @@ mongoose.connect(process.env.MONGODB_URI, {
   if (err) throw err;
   console.log("connected to mongodb")
 })
-
-// if (process.env.NODE_ENV === 'production') {
-//   app.use(express.static('userlogin/build'))
-//   app.get('/*', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'userlogin', 'build', 'index.html'))
-//   })
-// }
 
 
 // "userlogin-install": "npm install --prefix userlogin",
@@ -65,6 +61,11 @@ mongoose.connect(process.env.MONGODB_URI, {
 //     "dev": "concurrently \"npm run server\" \"npm run userlogin\"",
 //     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix userlogin && npm run build --prefix userlogin"
 
+app.get('/check', (req, res)=>{
+  res.send('MY NAME IS MAYOYEMIWA')
+})
+
+app.use(authRoutes);
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
   console.log(`Server is running on port`, PORT)
