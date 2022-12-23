@@ -118,10 +118,13 @@ module.exports.auth_get = async (req, res) => {
     }
 }
 module.exports.signup_post = async (req, res) => {
+    console.log("mee", req.body)
     const {email} = req.body.signupValues
+    // const {email} = req.body
     try {
         const user1 = await User.findOne({email})
         const user2 = await User2.findOne({email})
+        console.log({user1}, {user2})
         if(user1 || user2) return res.json({status:"FAILED", message:"user exist already"})
         const user = await User.create(req.body.signupValues)
         try {
